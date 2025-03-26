@@ -1,0 +1,194 @@
+/* Main Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background: #16213e;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #00aaff;
+}
+
+.nav {
+    display: flex;
+    gap: 20px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #00aaff;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.nav a:hover {
+    color: #ffcc00;
+    transform: translateY(-2px);
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+}
+
+.left-column, .right-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Video Frame */
+.video-frame {
+    width: 100%;
+    height: 300px;
+    background-color: #222;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+#live-feed {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* File Uploader */
+.file-uploader {
+    padding: 20px;
+    background-color: #0f3460;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.upload-btn {
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #00aaff, #ffcc00);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.upload-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,170,255,0.3);
+}
+
+/* Terminal */
+.terminal {
+    width: 100%;
+    height: 200px;
+    background-color: #000;
+    color: #0f0;
+    font-family: monospace;
+    padding: 10px;
+    border-radius: 10px;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.loading-bar {
+    width: 100%;
+    height: 30px;
+    background-color: #222;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(135deg, #00aaff, #ffcc00);
+    transition: width 0.5s ease; /* Smoother transition */
+    /* Remove any animation properties that were here before */
+}
+
+/* Alert Box */
+.alert-box {
+    padding: 15px;
+    background-color: #0f3460;
+    border-left: 5px solid #00aaff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.alert-box.alert {
+    border-left-color: #ff0000;
+    background-color: #2a0f0f;
+}
+
+/* Fuel Display */
+.fuel-display {
+    padding: 15px;
+    background-color: #0f3460;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #ffcc00;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Clock Styles (Keep your original clock styles) */
+.clock {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: #0f3460;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* ... rest of your original clock styles ... */
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .video-frame {
+        height: 200px;
+    }
+    
+    .terminal {
+        height: 150px;
+    }
+    
+    .header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav {
+        width: 100%;
+        justify-content: space-around;
+    }
+}

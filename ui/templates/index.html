@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FILLSAFE AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="header">
+        <div class="logo">FILLSAFE AI</div>
+        <div class="nav">
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="#">Sign Up</a>
+            <a href="#">Contact Us</a>
+        </div>
+    </div>
+
+    <h3>Upload the required image or video</h3>
+
+    <div class="container">
+        <div class="left-column">
+            <div class="clock" aria-label="00:00:00 AM">
+                <!-- Keep your original clock structure -->
+            </div>
+            <div class="video-frame" id="video-frame">
+                <video id="processed-video" controls style="display: none;"></video>
+            </div>
+            <div class="file-uploader">
+                <input type="file" id="file-upload" accept="video/*" style="display: none;">
+                <button class="upload-btn" onclick="document.getElementById('file-upload').click()">
+                    Upload Video
+                </button>
+            </div>
+        </div>
+        <div class="right-column">
+            <div class="terminal" id="terminal">
+                > System initialized<br>
+                > Waiting for input...<br>
+            </div>
+            <div class="loading-bar" id="loading-bar" style="display: none;">
+                <div class="progress"></div>
+            </div>
+            <div class="alert-box" id="alert-box">
+                <strong>Backend Status:</strong> System operational
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/dash.js') }}"></script>
+</body>
+</html>
