@@ -1,0 +1,26 @@
+<annotation>
+	<folder>images</folder>
+	<filename>VOC2007_16.jpg</filename>
+	<path>./annotations/images\VOC2007_16.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>333</width>
+		<height>500</height>
+		<depth>1</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>hand</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>265</xmin>
+			<ymin>155</ymin>
+			<xmax>310</xmax>
+			<ymax>216</ymax>
+		</bndbox>
+	</object>
+</annotation>
