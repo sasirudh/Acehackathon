@@ -52,6 +52,122 @@ body {
     gap: 20px;
 }
 
+/* Clock Styles */
+.clock {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: #0f3460;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.clock__block {
+    background-color: hsl(223,90%,40%);
+    border-radius: 0.5rem;
+    box-shadow: 0 1rem 2rem hsla(223,90%,60%,0.4);
+    font-size: 3em;
+    line-height: 2;
+    margin: 0.75rem;
+    overflow: hidden;
+    text-align: center;
+    width: 6rem;
+    height: 6rem;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    color: #e0e0e0;
+}
+
+.clock__block--small {
+    border-radius: 0.25rem;
+    box-shadow: 0 0.5rem 2rem hsla(223,90%,60%,0.4);
+    font-size: 1em;
+    line-height: 3;
+    width: 3rem;
+    height: 3rem;
+}
+
+.clock__colon {
+    display: inherit;
+    font-size: 2em;
+    opacity: 0.5;
+    position: relative;
+    color: #00aaff;
+}
+
+.clock__colon:before,
+.clock__colon:after {
+    background-color: currentColor;
+    border-radius: 50%;
+    content: "";
+    display: block;
+    position: absolute;
+    top: -0.05em;
+    left: -0.05em;
+    width: 0.1em;
+    height: 0.1em;
+    transition: background-color 0.3s;
+}
+
+.clock__colon:before {
+    transform: translateY(-200%);
+}
+
+.clock__colon:after {
+    transform: translateY(200%);    
+}
+
+.clock__digit-group {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.clock__digits {
+    width: 100%;
+    height: 100%;
+}
+
+.clock__block--bounce {
+    animation: bounce 0.75s; 
+}
+
+.clock__block--bounce .clock__digit-group {
+    animation: roll 0.75s ease-in-out forwards; 
+    transform: translateY(-50%);
+}
+
+.clock__block--delay1,
+.clock__block--delay1 .clock__digit-group {
+    animation-delay: 0.1s;
+}
+
+.clock__block--delay2,
+.clock__block--delay2 .clock__digit-group {
+    animation-delay: 0.2s;
+}
+
+@keyframes bounce {
+    from, to {
+        animation-timing-function: ease-in;
+        transform: translateY(0);
+    }
+    50% {
+        animation-timing-function: ease-out;
+        transform: translateY(15%);
+    }
+}
+
+@keyframes roll {
+    from {
+        transform: translateY(-50%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
 /* Video Frame */
 .video-frame {
     width: 100%;
@@ -96,7 +212,7 @@ body {
     box-shadow: 0 6px 12px rgba(0,170,255,0.3);
 }
 
-/* Terminal */
+/* Terminal Styles */
 .terminal {
     width: 100%;
     height: 200px;
@@ -107,8 +223,24 @@ body {
     border-radius: 10px;
     overflow-y: auto;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    position: relative;
 }
 
+.terminal::after {
+    content: '▋';
+    animation: blink 1s step-end infinite;
+    color: #0f0;
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Loading Bar */
 .loading-bar {
     width: 100%;
     height: 30px;
@@ -122,9 +254,16 @@ body {
     height: 100%;
     width: 0%;
     background: linear-gradient(135deg, #00aaff, #ffcc00);
-    transition: width 0.5s ease; /* Smoother transition */
-    /* Remove any animation properties that were here before */
+    animation: fill 2s infinite;
+    transition: width 0.5s ease;
 }
+
+@keyframes fill {
+    0% { width: 0%; }
+    50% { width: 100%; }
+    100% { width: 0%; }
+}
+
 
 /* Alert Box */
 .alert-box {
@@ -134,11 +273,17 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     transition: all 0.3s ease;
+    animation: pulse 2s infinite alternate;
 }
 
 .alert-box.alert {
     border-left-color: #ff0000;
     background-color: #2a0f0f;
+}
+
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.02); }
 }
 
 /* Fuel Display */
@@ -151,22 +296,13 @@ body {
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     text-align: center;
     margin-top: 10px;
+    transition: all 0.5s ease;
 }
 
-/* Clock Styles (Keep your original clock styles) */
-.clock {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    background-color: #0f3460;
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+.fuel-display:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0,170,255,0.3);
 }
-
-/* ... rest of your original clock styles ... */
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -190,5 +326,26 @@ body {
     .nav {
         width: 100%;
         justify-content: space-around;
+    }
+    
+    .clock__block {
+        width: 4rem;
+        height: 4rem;
+        font-size: 2em;
+    }
+    
+    .clock__block--small {
+        width: 2rem;
+        height: 2rem;
+    }
+    
+    .progress {
+        animation: fill-mobile 2s infinite;
+    }
+    
+    @keyframes fill-mobile {
+        0% { width: 0%; }
+        50% { width: 75%; }
+        100% { width: 0%; }
     }
 }
