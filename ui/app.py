@@ -39,6 +39,8 @@ class FuelStationSafetyMonitor:
             'smoke': False,
             'pose': False,
             'fueling': False
+
+
         }
         self.video_path = video_path
         self.total_fuel_injected = 0.0
@@ -229,6 +231,11 @@ def get_status():
 @app.route('/processed/<path:filename>')
 def serve_processed(filename):
     return send_from_directory(app.config['PROCESSED_FOLDER'], filename)
+
+@app.route('/processed_video')
+def processed_video():
+    return send_from_directory(app.config['PROCESSED_FOLDER'], processing_state['output_file'])
+
 
 @app.route('/login')
 def login():

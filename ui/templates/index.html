@@ -51,7 +51,10 @@
             </div>
             
             <div class="video-frame" id="video-frame">
-                <video id="processed-video" controls style="display: none;"></video>
+                <video id="processed-video" controls style="display: none;">
+                    <source id="video-source" src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
             
             <div class="file-uploader">
@@ -75,17 +78,26 @@
                 <div class="progress"></div>
             </div>
             
-            <!-- System Status Alerts -->
-            <div class="alert-box" id="alert-box">
-                <strong>Backend Status:</strong> System operational
-            </div>
-            
             <!-- Fuel Display -->
             <div class="fuel-display">
                 Total Fuel Injected: <span id="fuel-value">0.00</span> L
             </div>
         </div>
     </div>
+
+    <script>
+        function updateVideoSource(videoUrl) {
+            let videoElement = document.getElementById("processed-video");
+            let videoSource = document.getElementById("video-source");
+
+            videoSource.src = videoUrl;
+            videoElement.load();
+            videoElement.style.display = "block";  // Make sure the video is visible
+        }
+
+        // Example usage (this should be called when your backend provides the processed video URL)
+        // updateVideoSource("{{ url_for('processed_video', filename='processed_example.mp4') }}");
+    </script>
 
     <script src="{{ url_for('static', filename='js/dash.js') }}"></script>
 </body>
